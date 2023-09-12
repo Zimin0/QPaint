@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorings Creator</title>
+    <link rel="stylesheet" href="{% static 'manual/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'manual/node_modules/cropperjs/dist/cropper.min.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrap-content">
+        <div class="content">
+            <header class="container wrapper header">
+                <div class="wrapper header-content">
+                    <div class="wrapper dropdown-lang">
+                        <img id="lang-prew" class="flag" src="{% static 'manual/img/ru.svg' %}" alt="">
+                        <i class="fa-solid fa-caret-down"></i>
+                        <div class="dropdown-content">
+                            <ul class="langs">
+                                <li class="wrapper lang-li"><img class="flag" src="{% static 'manual/img/ru.svg' %}" alt="">Русский</li>
+                                <li class="wrapper lang-li"><img class="flag" src="{% static 'manual/img/en.svg' %}" alt="">English</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <a href="{% url 'manual:get_manual' %}" class="logo">LOGO</a> 
+
+                    <a class="faq-link" href="mailto:example@mail.ru">
+                        <img src="{% static 'manual/img/ic-faq.svg' %}" alt="FAQ">
+                    </a>
+                </div>
+
+                <p class="header-title" id="old-header-title">Раскраска по номерам</p>
+                <p class="header-title" id="new-header-title">
+                    Приблизь крупные объекты, например, лица, и избегай однотонного фона
+                </p>
+            </header>
+
+            <section class="container">
+                <div class="wrapper" id="upload-photo-block">
+                    <div id="upload-invite" class="wrapper">
+                        <p class="title-2">
+                            Загрузите любую картинку из своей медиатеки
+                        </p>
+                        <button class="upload-btn" onclick="openInfo()">Загрузить</button>
+                    </div>
+
+                    <a class="submit-btn" id="upload-back" href="{% url 'manual:version' %}">Назад</a> 
+
+                    <div id="photo-info" class="wrapper">
+                        <img class="info-img" src="{% static 'manual/img/bad-pic-1.jpg' %}" alt="">
+                        <img class="info-img" src="{% static 'manual/img/bad-pic-2.jpg' %}" alt="">
+                        <img class="info-img" src="{% static 'manual/img/good-pic-1.jpg' %}" alt="">
+                        <img class="info-img" src="{% static 'manual/img/good-pic-2.jpg' %}" alt="">
+                    </div>
+
+                    <div id="upload-block">
+                        <input type="file" name="photo" id="photo" onchange="openCrop(event)">
+                        <button class="submit-btn" onclick="photo.click()">Ок, понятно</button>
+                    </div>
+
+                    <div id="cropper-block" class="wrapper">
+                        <img src="" alt="" id="crop-img">
+                        <form id="upload-photo-form" method="POST">
+                            {% csrf_token %}
+                            <input type="file" name="cropped-photo" id="cropped-photo" onchange="this.form.submit()">
+                            <button class="submit-btn" id="crop-submit" onclick="sendCroppedImg()">Готово</button>
+                        </form>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+        <footer class="footer"></footer>
+    </div>
+
+    <script src="{% static 'manual/node_modules/cropperjs/dist/cropper.min.js' %}"></script>
+    <script src="{% static 'manual/js/upload.js' %}"></script>
+    <script src="https://kit.fontawesome.com/2a7549d8ca.js" crossorigin="anonymous"></script>
+    <script src="{% static 'manual/js/langs_changer.js' %}"></script>
+</body>
+
+</html>

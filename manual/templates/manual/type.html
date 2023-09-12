@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorings Creator</title>
+    <link rel="stylesheet" href="{% static 'manual/css/styles.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrap-content">
+        <div class="content">
+            <header class="container wrapper header">
+                <div class="wrapper header-content">
+                    <div class="wrapper dropdown-lang">
+                        <img id="lang-prew" class="flag" src="{% static 'manual/img/ru.svg' %}" alt="">
+                        <i class="fa-solid fa-caret-down"></i>
+                        <div class="dropdown-content">
+                            <ul class="langs">
+                                <li class="wrapper lang-li"><img class="flag" src="{% static 'manual/img/ru.svg' %}" alt="">Русский</li>
+                                <li class="wrapper lang-li"><img class="flag" src="{% static 'manual/img/en.svg' %}" alt="">English</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <a href="{% url 'manual:get_manual' %}" class="logo">LOGO</a> 
+
+                    <a class="faq-link" href="mailto:example@mail.ru">
+                        <img src="{% static 'manual/img/ic-faq.svg' %}" alt="FAQ">
+                    </a>
+                </div>
+
+                <p class="header-title">Выбери тип своего набора</p>
+            </header>
+
+            <section class="container">
+                <form class="wrapper" id="coloring-type-form" method="POST">
+                    {% csrf_token %}
+                    <label class="title-2 wrapper type-label" for="original">
+                        ORIGINAL 30x40
+                        <img class="type-img" src="{% static 'manual/img/original.png' %}" alt="">
+                        <input type="radio" name="original" id="original" class="type-radio" value="original"
+                            onclick="selectType()">
+                    </label>
+
+                    <div class="btns">
+                        <a class="submit-btn" href="{% url 'manual:code' %}">Назад</a> 
+                        <input class="submit-btn" type="submit" id="type-next" value="Далее" disabled>
+                    </div>
+                </form>
+            </section>
+
+        </div>
+
+        <footer class="footer"></footer>
+    </div>
+
+    <script src="{% static 'manual/js/type.js' %}"></script>
+    <script src="https://kit.fontawesome.com/2a7549d8ca.js" crossorigin="anonymous"></script>
+    <script src="{% static 'manual/js/langs_changer.js' %}"></script>
+</body>
+
+</html>
