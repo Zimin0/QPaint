@@ -4,12 +4,26 @@ import os
 
 class AssemblyCode(models.Model):
     """ Код сборки, получаемый из физического набора """
+    def __str__(self) -> str:
+        return f"Код сборки №{self.pk}"
+    
+    class Meta:
+        verbose_name = "Код сборки из набора"
+        verbose_name_plural = "Коды сборки из наборов"
+
     code = models.CharField(max_length=20, verbose_name="Код набора", unique=True, blank=False)
     created = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     amount_of_usage = models.IntegerField(default=0)
 
 class Constructor(models.Model):
     """ Создание конструктора пользователем - загрузка картинки и превращение ее в инструкцию по сборке """
+    def __str__(self) -> str:
+        return f"Конструктор картинки №{self.pk}"
+    
+    class Meta:
+        verbose_name = "Конструктор картинки"
+        verbose_name_plural = "Конструкторы картинко"
+
     def get_file_name(instance, filename):
         today = datetime.today()
         year = str(today.year)
