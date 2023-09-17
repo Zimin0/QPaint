@@ -13,3 +13,4 @@ class ConstructorAdmin(admin.ModelAdmin):
     search_fields = ['slug', 'assemblycode__code']
     list_filter = ['manual_file']
     raw_id_fields = ['assemblycode'] 
+    prepopulated_fields = {"slug": ("manual_file",)}

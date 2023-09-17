@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorings Creator</title>
+    <link rel="stylesheet" href="{% static 'manual/css/styles.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrap-content">
+        <div class="content">
+            <header class="container wrapper header">
+                <div class="wrapper header-content">
+                    <div class="wrapper dropdown-lang">
+                        <img id="lang-prew" class="flag" src="{% static 'manual/img/ru.svg' %}" alt="">
+                        <i class="fa-solid fa-caret-down"></i>
+                        <div class="dropdown-content">
+                            <ul class="langs">
+                                <li class="wrapper lang-li"><img class="flag" src="{% static 'manual/img/ru.svg' %}" alt="">Русский</li>
+                                <li class="wrapper lang-li"><img class="flag" src="{% static 'manual/img/ru.svg' %}" alt="">English</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <a href="#!" class="logo">LOGO</a>
+
+                    <a class="faq-link" href="mailto:example@mail.ru">
+                        <img src="{% static 'manual/img/ic-faq.svg' %}" alt="FAQ">
+                    </a>
+                </div>
+
+                <p class="header-title">Осталось ввести e-mail и мы сразу отправим на него инструкцию
+                    для раскраски!</p>
+            </header>
+
+            <section class="container">
+                <form class="wrapper" id="email-form" method="POST">
+                    {% csrf_token %}
+                    <label class="title-2" for="email">
+                        Введи свою почту
+                    </label>
+                    <input id="email-input" name="email" type="text" placeholder="Твой e-mail">
+
+                    <input type="submit" id="email-submit" class="upload-btn" value="Отправить">
+                </form>
+            </section>
+        </div>
+
+        <footer class="footer"></footer>
+    </div>
+
+    <script src="https://kit.fontawesome.com/2a7549d8ca.js" crossorigin="anonymous"></script>
+    <script src="{% static 'manual/js/langs_changer.js' %}"></script>
+</body>
+
+</html>

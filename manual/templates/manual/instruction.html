@@ -1,0 +1,661 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorings Creator</title>
+    <link rel="stylesheet" href="{% static 'manual/css/styles.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrap-content">
+        <div class="content">
+            <header class="container wrapper header">
+                <div class="wrapper header-content">
+                    <div class="wrapper dropdown-lang">
+                        <img id="lang-prew" class="flag" src="{% static 'manual/img/ru.svg' %}" alt="">
+                        <i class="fa-solid fa-caret-down"></i>
+                        <div class="dropdown-content">
+                            <ul class="langs">
+                                <li class="wrapper lang-li"><img class="flag" src="{% static 'manual/img/ru.svg' %}" alt="">Русский</li>
+                                <li class="wrapper lang-li"><img class="flag" src="{% static 'manual/img/ru.svg' %}" alt="">English</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <a href="#!" class="logo">LOGO</a>
+
+                    <a class="faq-link" href="mailto:example@mail.ru">
+                        <img src="{% static 'manual/img/ic-faq.svg' %}" alt="FAQ">
+                    </a>
+                </div>
+
+                <p class="header-title colors wrapper">
+                    <span class="black square"></span>
+                    <span class="gray1 square"></span>
+                    <span class="gray2 square"></span>
+                    <span class="gray3 square"></span>
+                    <span class="white square"></span>
+                </p>
+            </header>
+
+            <section class="container">
+                <div id="instruction-container">
+                    <div data-num=1 class="instruction-block">
+                        <span class="block-num">1</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=2 class="instruction-block">
+                        <span class="block-num">2</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=3 class="instruction-block">
+                        <span class="block-num">3</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=4 class="instruction-block">
+                        <span class="block-num">4</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=5 class="instruction-block">
+                        <span class="block-num">5</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=6 class="instruction-block">
+                        <span class="block-num">6</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=7 class="instruction-block">
+                        <span class="block-num">7</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=8 class="instruction-block">
+                        <span class="block-num">8</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=9 class="instruction-block">
+                        <span class="block-num">9</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=10 class="instruction-block">
+                        <span class="block-num">10</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=11 class="instruction-block">
+                        <span class="block-num">11</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=12 class="instruction-block">
+                        <span class="block-num">12</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=13 class="instruction-block">
+                        <span class="block-num">13</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=14 class="instruction-block">
+                        <span class="block-num">14</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=15 class="instruction-block">
+                        <span class="block-num">15</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=16 class="instruction-block">
+                        <span class="block-num">16</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=17 class="instruction-block">
+                        <span class="block-num">17</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=18 class="instruction-block">
+                        <span class="block-num">18</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=19 class="instruction-block">
+                        <span class="block-num">19</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=20 class="instruction-block">
+                        <span class="block-num">20</span>
+                        <div class="colors-block"></div>
+                    </div>
+                    <div data-num=21 class="instruction-block">
+                        <span class="block-num">21</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=22 class="instruction-block">
+                        <span class="block-num">22</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=23 class="instruction-block">
+                        <span class="block-num">23</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=24 class="instruction-block">
+                        <span class="block-num">24</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=25 class="instruction-block">
+                        <span class="block-num">25</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=26 class="instruction-block">
+                        <span class="block-num">26</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=27 class="instruction-block">
+                        <span class="block-num">27</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=28 class="instruction-block">
+                        <span class="block-num">28</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=29 class="instruction-block">
+                        <span class="block-num">29</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=30 class="instruction-block">
+                        <span class="block-num">30</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=31 class="instruction-block">
+                        <span class="block-num">31</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=32 class="instruction-block">
+                        <span class="block-num">32</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=33 class="instruction-block">
+                        <span class="block-num">33</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=34 class="instruction-block">
+                        <span class="block-num">34</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=35 class="instruction-block">
+                        <span class="block-num">35</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=36 class="instruction-block">
+                        <span class="block-num">36</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=37 class="instruction-block">
+                        <span class="block-num">37</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=38 class="instruction-block">
+                        <span class="block-num">38</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=39 class="instruction-block">
+                        <span class="block-num">39</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=40 class="instruction-block">
+                        <span class="block-num">40</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=41 class="instruction-block">
+                        <span class="block-num">41</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=42 class="instruction-block">
+                        <span class="block-num">42</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=43 class="instruction-block">
+                        <span class="block-num">43</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=44 class="instruction-block">
+                        <span class="block-num">44</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=45 class="instruction-block">
+                        <span class="block-num">45</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=46 class="instruction-block">
+                        <span class="block-num">46</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=47 class="instruction-block">
+                        <span class="block-num">47</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=48 class="instruction-block">
+                        <span class="block-num">48</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=49 class="instruction-block">
+                        <span class="block-num">49</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=50 class="instruction-block">
+                        <span class="block-num">50</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=51 class="instruction-block">
+                        <span class="block-num">51</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=52 class="instruction-block">
+                        <span class="block-num">52</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=53 class="instruction-block">
+                        <span class="block-num">53</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=54 class="instruction-block">
+                        <span class="block-num">54</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=55 class="instruction-block">
+                        <span class="block-num">55</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=56 class="instruction-block">
+                        <span class="block-num">56</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=57 class="instruction-block">
+                        <span class="block-num">57</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=58 class="instruction-block">
+                        <span class="block-num">58</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=59 class="instruction-block">
+                        <span class="block-num">59</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=60 class="instruction-block">
+                        <span class="block-num">60</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=61 class="instruction-block">
+                        <span class="block-num">61</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=62 class="instruction-block">
+                        <span class="block-num">62</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=63 class="instruction-block">
+                        <span class="block-num">63</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=64 class="instruction-block">
+                        <span class="block-num">64</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=65 class="instruction-block">
+                        <span class="block-num">65</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=66 class="instruction-block">
+                        <span class="block-num">66</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=67 class="instruction-block">
+                        <span class="block-num">67</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=68 class="instruction-block">
+                        <span class="block-num">68</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=69 class="instruction-block">
+                        <span class="block-num">69</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=70 class="instruction-block">
+                        <span class="block-num">70</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=71 class="instruction-block">
+                        <span class="block-num">71</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=72 class="instruction-block">
+                        <span class="block-num">72</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=73 class="instruction-block">
+                        <span class="block-num">73</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=74 class="instruction-block">
+                        <span class="block-num">74</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=75 class="instruction-block">
+                        <span class="block-num">75</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=76 class="instruction-block">
+                        <span class="block-num">76</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=77 class="instruction-block">
+                        <span class="block-num">77</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=78 class="instruction-block">
+                        <span class="block-num">78</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=79 class="instruction-block">
+                        <span class="block-num">79</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=80 class="instruction-block">
+                        <span class="block-num">80</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=81 class="instruction-block">
+                        <span class="block-num">81</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=82 class="instruction-block">
+                        <span class="block-num">82</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=83 class="instruction-block">
+                        <span class="block-num">83</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=84 class="instruction-block">
+                        <span class="block-num">84</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=85 class="instruction-block">
+                        <span class="block-num">85</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=86 class="instruction-block">
+                        <span class="block-num">86</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=87 class="instruction-block">
+                        <span class="block-num">87</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=88 class="instruction-block">
+                        <span class="block-num">88</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=89 class="instruction-block">
+                        <span class="block-num">89</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=90 class="instruction-block">
+                        <span class="block-num">90</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=91 class="instruction-block">
+                        <span class="block-num">91</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=92 class="instruction-block">
+                        <span class="block-num">92</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=93 class="instruction-block">
+                        <span class="block-num">93</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=94 class="instruction-block">
+                        <span class="block-num">94</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=95 class="instruction-block">
+                        <span class="block-num">95</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=96 class="instruction-block">
+                        <span class="block-num">96</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=97 class="instruction-block">
+                        <span class="block-num">97</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=98 class="instruction-block">
+                        <span class="block-num">98</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=99 class="instruction-block">
+                        <span class="block-num">99</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=100 class="instruction-block">
+                        <span class="block-num">100</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=101 class="instruction-block">
+                        <span class="block-num">101</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=102 class="instruction-block">
+                        <span class="block-num">102</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=103 class="instruction-block">
+                        <span class="block-num">103</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=104 class="instruction-block">
+                        <span class="block-num">104</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=105 class="instruction-block">
+                        <span class="block-num">105</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=106 class="instruction-block">
+                        <span class="block-num">106</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=107 class="instruction-block">
+                        <span class="block-num">107</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=108 class="instruction-block">
+                        <span class="block-num">108</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=109 class="instruction-block">
+                        <span class="block-num">109</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=110 class="instruction-block">
+                        <span class="block-num">110</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=111 class="instruction-block">
+                        <span class="block-num">111</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=112 class="instruction-block">
+                        <span class="block-num">112</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=113 class="instruction-block">
+                        <span class="block-num">113</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=114 class="instruction-block">
+                        <span class="block-num">114</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=115 class="instruction-block">
+                        <span class="block-num">115</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=116 class="instruction-block">
+                        <span class="block-num">116</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=117 class="instruction-block">
+                        <span class="block-num">117</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=118 class="instruction-block">
+                        <span class="block-num">118</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=119 class="instruction-block">
+                        <span class="block-num">119</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div data-num=120 class="instruction-block">
+                        <span class="block-num">120</span>
+                        <div class="colors-block"></div>
+                    </div>
+
+                    <div class="paginator" onclick="pagination(event)"></div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="footer"></footer>
+    </div>
+
+    <script src="https://kit.fontawesome.com/2a7549d8ca.js" crossorigin="anonymous"></script>
+    <script src="{% static 'manual/js/langs_changer.js' %}"></script>
+    <script src="{% static 'manual/js/instruction.js' %}"></script> 
+</body>
+
+</html>

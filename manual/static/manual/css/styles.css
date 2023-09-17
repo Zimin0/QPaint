@@ -159,7 +159,7 @@ body {
 }
 
 .logo {
-    padding-right: 18px;
+    padding-right: 13px;
 
     font-size: 48px;
     font-weight: 700;
@@ -214,7 +214,9 @@ body {
 
 #coloring-code-form,
 #coloring-type-form,
-#upload-photo-block {
+#upload-photo-block,
+#email-form,
+#instruction-container {
     background-color: #e4f1f7;
     border-radius: 1.2rem;
 
@@ -226,7 +228,8 @@ body {
     box-shadow: 5px 5px 10px grey;
 }
 
-#code-input {
+#code-input,
+#email-input {
     display: block !important;
     border: 1px solid black;
     border-radius: 3px;
@@ -347,6 +350,172 @@ body {
 
 .cropper-container {
     box-shadow: 0px 0px 30px #0195ae;
+}
+
+
+/* Email Styles */
+
+#email-submit {
+    border-radius: 0.5em;
+    background-color: #fff;
+    background-image: url("../img/email_icon.svg");
+    background-repeat: no-repeat;
+    background-size: 50px;
+    background-position: 0%;
+}
+
+#email-submit:hover,
+#email-submit:active {
+    background-color: #e4f1f7;
+}
+
+
+/* Instrucrion Styles */
+
+.colors {
+    column-gap: 15px;
+}
+
+.square {
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 30px;
+}
+
+.colors .square {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 15px;
+}
+
+.colors .square.black::after {
+    content: "Black";
+    position: absolute;
+    font-size: 15px;
+    left: 4px;
+    bottom: -20px;
+}
+
+.colors .square.gray1::after {
+    content: "Gray1";
+    position: absolute;
+    font-size: 15px;
+    left: 4px;
+    bottom: -20px;
+}
+
+.colors .square.gray2::after {
+    content: "Gray2";
+    position: absolute;
+    font-size: 15px;
+    left: 4px;
+    bottom: -20px;
+}
+
+.colors .square.gray3::after {
+    content: "Gray3";
+    position: absolute;
+    font-size: 15px;
+    left: 4px;
+    bottom: -20px;
+}
+
+.colors .square.white::after {
+    content: "White";
+    position: absolute;
+    font-size: 15px;
+    left: 4px;
+    bottom: -20px;
+}
+
+#instruction-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    box-sizing: border-box;
+    padding: 0;
+    padding-top: 15px;
+    padding-left: 15px;
+    margin-bottom: 40px;
+}
+
+.instruction-block {
+    display: none;
+
+    width: 430px;
+    height: 645px;
+
+    font-size: 28px;
+
+    border-left: 3px solid black;
+
+    margin: 10px 20px;
+}
+
+.block-num {
+    display: block;
+    width: 50px;
+    transform: translateX(-60px);
+    text-align: right;
+}
+
+.colors-block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-left: 10px;
+    transform: translateY(-25px);
+}
+
+.paginator {
+    display: flex;
+
+    font-size: 30px;
+    line-height: 150%;
+    width: 70%;
+    height: 85px;
+
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    margin-bottom: 30px;
+
+    color: #0195ae;
+}
+
+.paginator>span {
+    display: inline-block;
+    padding: 3px 15px;
+    margin-right: 20px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.paginator_active {
+    background-color: #85c8de;
+    color: #024354;
+}
+
+.black {
+    background-color: rgb(0, 0, 0);
+}
+
+.gray1 {
+    background-color: rgb(64, 64, 64);
+}
+
+.gray2 {
+    background-color: rgb(128, 128, 128);
+}
+
+.gray3 {
+    background-color: rgb(191, 191, 191);
+}
+
+.white {
+    background-color: rgb(255, 255, 255);
 }
 
 /* Footer Styles */

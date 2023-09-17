@@ -17,6 +17,7 @@ class AssemblyCode(models.Model):
 
 class Constructor(models.Model):
     """ Создание конструктора пользователем - загрузка картинки и превращение ее в инструкцию по сборке """
+    
     def __str__(self) -> str:
         return f"Конструктор картинки №{self.pk}"
     
@@ -35,4 +36,5 @@ class Constructor(models.Model):
     slug = models.SlugField(verbose_name="Слаг")
     picture = models.ImageField(verbose_name="картинка JPG", upload_to=get_file_name)
     assemblycode = models.ForeignKey(AssemblyCode, verbose_name="Код-сборки", on_delete=models.SET_NULL, null=True)
+    email = models.CharField(max_length=100, verbose_name="Почта", default="", null=True)
 
