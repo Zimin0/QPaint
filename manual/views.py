@@ -29,7 +29,7 @@ class VersionView(TemplateView):
         return redirect('manual:upload')
 
 class UploadView(TemplateView):
-    """ Загрузка картинки на обработку. """
+    """ Загрузка пользователем картинки на обработку. """
     template_name = "manual/upload.html"
 
     def get(self, request, *args, **kwargs):
@@ -37,8 +37,13 @@ class UploadView(TemplateView):
 
     def post(self, request, *args, **kwargs):
         print(request.POST)
+        # Нажата кнопка предпросмотра картинки
+        new_constructor = Constructor.objects.create(
+            manual_file = ..., # получаем из бизнес логики
+            picture = ..., # получаем из бизнес логики
+            assemblycode = AssemblyCode.objects.get(code=request.session.get("assembly_code", None)),
+        )
         return redirect('manual:email')
-
 
 class EmailView(TemplateView):
     """ Ввод почты для отправки инструкции. """
@@ -49,13 +54,12 @@ class EmailView(TemplateView):
 
     def post(self, request, *args, **kwargs):
         email = request.POST.get('email', None)
-        new_constructor = Constructor.objects.create(
-            manual_file = ..., # получаем из бизес логики
-            picture = ..., # получаем из бизнес логики
-            assemblycode = AssemblyCode.objects.get(code=request.session.get("assembly_code", None)),
-            email = email
-        )
         return redirect('manual:use_manual')
 
 class UseManualView(TemplateView):
+    """ Многостраничная инструкция по сборке """
     template_name = 'manual/instruction.html'
+
+class ChoosePicView(TemplateView):
+    """ Выбор из конвертированных картинок """
+    template_name = 'manual/choose_photo.html'

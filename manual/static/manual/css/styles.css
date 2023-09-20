@@ -215,6 +215,7 @@ body {
 #coloring-code-form,
 #coloring-type-form,
 #upload-photo-block,
+#coloring-photo-form,
 #email-form,
 #instruction-container {
     background-color: #e4f1f7;
@@ -241,17 +242,31 @@ body {
 }
 
 
-/* Type Styles */
+/* Type and Choose_Photo Styles */
 
 .type-label {
     column-gap: 30px;
 }
 
-.type-img {
+.photo-label {
+    column-gap: 15px;
+}
+
+.photos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+}
+
+.type-img,
+.photo-img {
     height: 134px;
 }
 
-.type-radio {
+.type-radio,
+.photo-radio {
     position: relative;
     width: 24px;
     height: 24px;
@@ -261,7 +276,8 @@ body {
     outline: none;
 }
 
-.type-radio::before {
+.type-radio::before,
+.photo-radio::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -274,7 +290,8 @@ body {
     border: 2px solid #01556a;
 }
 
-.type-radio:checked::after {
+.type-radio:checked::after,
+.photo-radio:checked::after {
     content: "";
     position: absolute;
     top: 50%;
@@ -297,6 +314,10 @@ body {
 
     flex-direction: column;
     row-gap: 35px;
+}
+
+#cropper-block {
+    row-gap: 20px;
 }
 
 #photo-info {
@@ -345,7 +366,29 @@ body {
 #crop-img {
     display: block;
     max-width: 100%;
-    height: 300px;
+    height: 70px;
+}
+
+.crop-btns {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.crop-btns button {
+    height: 50px;
+    width: 50px;
+    background-color: #ceebf9;
+    border: solid 2px #024354;
+    border-radius: 50%;
+}
+
+.crop-btns button:hover,
+.crop-btns button:active {
+    background-color: #85c8de;
+}
+
+.crop-btns button img {
+    width: 35px;
 }
 
 .cropper-container {
@@ -381,6 +424,8 @@ body {
     position: relative;
     width: 30px;
     height: 30px;
+
+    color: white;
 }
 
 .colors .square {
@@ -389,7 +434,7 @@ body {
     margin-bottom: 15px;
 }
 
-.colors .square.black::after {
+.colors .square.black::before {
     content: "Black";
     position: absolute;
     font-size: 15px;
@@ -397,7 +442,7 @@ body {
     bottom: -20px;
 }
 
-.colors .square.gray1::after {
+.colors .square.gray1::before {
     content: "Gray1";
     position: absolute;
     font-size: 15px;
@@ -405,7 +450,7 @@ body {
     bottom: -20px;
 }
 
-.colors .square.gray2::after {
+.colors .square.gray2::before {
     content: "Gray2";
     position: absolute;
     font-size: 15px;
@@ -413,7 +458,7 @@ body {
     bottom: -20px;
 }
 
-.colors .square.gray3::after {
+.colors .square.gray3::before {
     content: "Gray3";
     position: absolute;
     font-size: 15px;
@@ -421,12 +466,61 @@ body {
     bottom: -20px;
 }
 
-.colors .square.white::after {
+.colors .square.white::before {
     content: "White";
     position: absolute;
     font-size: 15px;
     left: 4px;
     bottom: -20px;
+}
+
+.colors .square.black::after,
+.square.uncolored.black::after {
+    content: "X";
+    position: absolute;
+    font-size: 20px;
+    left: 7px;
+    bottom: 1px;
+}
+
+.colors .square.gray1::after,
+.square.uncolored.gray1::after {
+    content: "D";
+    position: absolute;
+    font-size: 20px;
+    left: 7px;
+    bottom: 1px;
+}
+
+.colors .square.gray2::after,
+.square.uncolored.gray2::after {
+    content: "C";
+    position: absolute;
+    font-size: 20px;
+    left: 7px;
+    bottom: 1px;
+}
+
+.colors .square.gray3::after,
+.square.uncolored.gray3::after {
+    content: "B";
+    position: absolute;
+    font-size: 20px;
+    left: 7px;
+    bottom: 1px;
+
+    color: black;
+}
+
+.colors .square.white::after,
+.square.uncolored.white::after {
+    content: "O";
+    position: absolute;
+    font-size: 20px;
+    left: 7px;
+    bottom: 1px;
+
+    color: black;
 }
 
 #instruction-container {
@@ -516,6 +610,14 @@ body {
 
 .white {
     background-color: rgb(255, 255, 255);
+}
+
+.uncolored {
+    opacity: 0.65;
+}
+
+.colored {
+    opacity: 1;
 }
 
 /* Footer Styles */

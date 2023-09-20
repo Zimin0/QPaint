@@ -10,6 +10,9 @@ function openInfo() {
 }
 
 function openCrop(event) {
+    newHeadTitle.style.display = "none";
+    colorsTitle.style.display = "flex";
+
     photoInfo.style.display = "none";
     cropBlock.style.display = "flex";
 
@@ -28,22 +31,24 @@ function openCrop(event) {
     }
 
     let fileReader = new FileReader();
-    fileReader.onload = function() {
+    fileReader.onload = function () {
         cropImg.src = fileReader.result;
 
         cropper = new Cropper(cropImg, {
             aspectRatio: 30 / 40,
-            viewMode: 1
+            viewMode: 1,
+            dragMode: "move"
         });
     }
 
     fileReader.readAsDataURL(target.files[0]);
 }
 
+// Сохраняет новый файл картинки // 
 function sendCroppedImg() {
     cropper.getCroppedCanvas().toBlob((blob) => {
         var dt = new DataTransfer();
-        var file = new File([blob], "cropped_photo.png", {type: 'image/png'});
+        var file = new File([blob], "cropped_photo.png", { type: 'image/png' });
         dt.items.add(file);
         var file_list = dt.files;
         cropInput.files = file_list;
@@ -52,6 +57,7 @@ function sendCroppedImg() {
 
 const oldHeadTitle = document.getElementById("old-header-title");
 const newHeadTitle = document.getElementById("new-header-title");
+const colorsTitle = document.getElementById("colors-title");
 
 const uploadInvite = document.getElementById("upload-invite");
 const photoInfo = document.getElementById("photo-info");
@@ -61,6 +67,7 @@ const backBtn = document.getElementById("upload-back");
 const uploadBlock = document.getElementById("upload-block");
 
 newHeadTitle.style.display = "none";
+colorsTitle.style.display = "none";
 photoInfo.style.display = "none";
 cropBlock.style.display = "none";
 uploadBlock.style.display = "none";

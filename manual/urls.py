@@ -1,5 +1,5 @@
 from django.urls import path
-from manual.views import GetManualView, CodeView, VersionView, UploadView, UseManualView, EmailView
+from manual.views import GetManualView, CodeView, VersionView, UploadView, UseManualView, EmailView, ChoosePicView
 
 app_name = 'manual'
 
@@ -10,4 +10,5 @@ urlpatterns = [
     path('upload/', UploadView.as_view(), name='upload'),
     path('email/', EmailView.as_view(), name='email'),
     path('use-manual/', UseManualView.as_view(), name='use_manual'),
+    path('choose-pic/', ChoosePicView.as_view(), name='choose_pic')
 ]

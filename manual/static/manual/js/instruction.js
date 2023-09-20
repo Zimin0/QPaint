@@ -1,3 +1,5 @@
+const COLORING_COlORS = ["black", "gray1", "gray2", "gray3", "white"];
+
 async function setColors(page) {
     if (!instructionBlocks[page - 1].childNodes.length) {
 
@@ -15,15 +17,25 @@ async function setColors(page) {
             // Здесь должны получаться числа из массива и подставляться цвета 
 
             // let c = colors[i];
-            // colorSpan.style.backgroundColor = `rgb(${c[0]}, ${c[1]}, ${c[2]})`;
+            // if(c == [0, 0, 0]) colorSpan.classList.add("black");
+            // else if(c == [64, 64, 64]) colorSpan.classList.add("gray1");
+            // else if(c == [128, 128, 128]) colorSpan.classList.add("gray2");
+            // else if(c == [191, 191, 191]) colorSpan.classList.add("gray3");
+            // else if(c == [255, 255, 255]) colorSpan.classList.add("white");
 
-            let c = Math.random() * 255;
-            colorSpan.style.backgroundColor = `rgb(${c}, ${c}, ${c})`;
+            let c = COLORING_COlORS[Math.floor(Math.random() * 5)];
+            colorSpan.classList.add(c);
 
-            // Верхние 2 строчки убрать, когда заработают запросы (это просто рандомные оттенки серого для теста)
+            // Верхние 2 строчки и const COLORING_COLORS убрать, когда заработают запросы
 
             colorSpan.style.border = "solid 2px black"
+            colorSpan.classList.add("uncolored");
             instructionBlocks[page - 1].append(colorSpan);
+
+            colorSpan.addEventListener("dblclick", function () {
+                colorSpan.classList.toggle("uncolored");
+                colorSpan.classList.toggle("colored");
+            })
         }
     }
 }

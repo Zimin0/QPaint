@@ -32,9 +32,9 @@ class Constructor(models.Model):
         day = str(today.day).zfill(2)      # добавляем ведущий ноль, если день от 1 до 9
         return os.path.join(year, month, day, filename)
     
-    manual_file = models.FileField(verbose_name="Файл PDF инструкции", upload_to=get_file_name)
-    slug = models.SlugField(verbose_name="Слаг")
-    picture = models.ImageField(verbose_name="картинка JPG", upload_to=get_file_name)
+    manual_file = models.FileField(verbose_name="Файл PDF инструкции", upload_to=get_file_name, null=True)
+    slug = models.SlugField(verbose_name="Слаг", null=True)
+    picture = models.ImageField(verbose_name="картинка JPG", upload_to=get_file_name, null=True)
     assemblycode = models.ForeignKey(AssemblyCode, verbose_name="Код-сборки", on_delete=models.SET_NULL, null=True)
     email = models.CharField(max_length=100, verbose_name="Почта", default="", null=True)
 

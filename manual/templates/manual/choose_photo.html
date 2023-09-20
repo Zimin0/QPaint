@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorings Creator</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrap-content">
+        <div class="content">
+            <header class="container wrapper header">
+                <div class="wrapper header-content">
+                    <div class="wrapper dropdown-lang">
+                        <img id="lang-prew" class="flag" src="./img/ru.svg" alt="">
+                        <i class="fa-solid fa-caret-down"></i>
+                        <div class="dropdown-content">
+                            <ul class="langs">
+                                <li class="wrapper lang-li"><img class="flag" src="./img/ru.svg" alt="">Русский</li>
+                                <li class="wrapper lang-li"><img class="flag" src="./img/en.svg" alt="">English</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <a href="./index.html" class="logo">LOGO</a>
+
+                    <a class="faq-link" href="mailto:example@mail.ru">
+                        <img src="../img/ic-faq.svg" alt="FAQ">
+                    </a>
+                </div>
+
+                <p class="header-title colors wrapper" id="colors-title">
+                    <span class="black square"></span>
+                    <span class="gray1 square"></span>
+                    <span class="gray2 square"></span>
+                    <span class="gray3 square"></span>
+                    <span class="white square"></span>
+                </p>
+            </header>
+
+            <section class="container">
+                <form class="wrapper" id="coloring-photo-form" action="POST" onsubmit="return false">
+                    <div class="photos">
+                        <label class="title-2 wrapper photo-label" for="photo1">
+                            <img class="photo-img" src="./img/original.png" alt="">
+                            <input type="radio" name="coloring_photo" id="photo1" class="photo-radio" value="photo1"
+                                onclick="selectPhoto()">
+                        </label>
+
+                        <label class="title-2 wrapper photo-label" for="photo2">
+                            <img class="photo-img" src="./img/test.jpg" alt="">
+                            <input type="radio" name="coloring_photo" id="photo1" class="photo-radio" value="photo2"
+                                onclick="selectPhoto()">
+                        </label>
+
+                        <label class="title-2 wrapper photo-label" for="photo3">
+                            <img class="photo-img" src="./img/test.jpg" alt="">
+                            <input type="radio" name="coloring_photo" id="photo1" class="photo-radio" value="photo3"
+                                onclick="selectPhoto()">
+                        </label>
+
+                        <label class="title-2 wrapper photo-label" for="photo4">
+                            <img class="photo-img" src="./img/original.png" alt="">
+                            <input type="radio" name="coloring_photo" id="photo1" class="photo-radio" value="photo4"
+                                onclick="selectPhoto()">
+                        </label>
+
+                        <label class="title-2 wrapper photo-label" for="photo5">
+                            <img class="photo-img" src="./img/original.png" alt="">
+                            <input type="radio" name="coloring_photo" id="photo1" class="photo-radio" value="photo5"
+                                onclick="selectPhoto()">
+                        </label>
+
+                        <label class="title-2 wrapper photo-label" for="photo6">
+                            <img class="photo-img" src="./img/original.png" alt="">
+                            <input type="radio" name="coloring_photo" id="photo1" class="photo-radio" value="photo6"
+                                onclick="selectPhoto()">
+                        </label>
+                    </div>
+
+                    <div class="btns">
+                        <a class="submit-btn" href="./upload.html">Назад</a>
+                        <input class="submit-btn" type="submit" id="photo-next" value="Далее" disabled>
+                    </div>
+                </form>
+            </section>
+
+        </div>
+
+        <footer class="footer"></footer>
+    </div>
+
+    <script src="./js/choose_photo.js"></script>
+    <script src="https://kit.fontawesome.com/2a7549d8ca.js" crossorigin="anonymous"></script>
+    <script src="./js/langs_changer.js"></script>
+</body>
+
+</html>
