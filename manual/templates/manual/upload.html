@@ -82,8 +82,8 @@
                         </div>
                         <form method="POST" id="upload-photo-form" enctype="multipart/form-data">
                             {% csrf_token %}
-                            <input type="file" name="cropped-photo" id="cropped-photo" onchange="this.form.submit()"> <!--    --> 
-                            <button type="submit" class="submit-btn" id="crop-submit" onclick="sendCroppedImg()">Готово</button>
+                            <input type="file" name="cropped-photo" id="cropped-photo">
+                            <button type="button" class="submit-btn" id="crop-submit" onclick="sendCroppedImgAndSubmit()">Готово</button>
                         </form>
                     </div>
                 </div>

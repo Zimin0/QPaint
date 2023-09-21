@@ -44,18 +44,30 @@ function openCrop(event) {
     fileReader.readAsDataURL(target.files[0]);
 }
 
+function onSubmitWithDelay(form){
+    // alert("SHIT!!!");
+    sendCroppedImg();
+    // setTimeout(form.submit(), 5000);
+}
+
 // Добавляет в input новый файл картинки // 
-function sendCroppedImg() {
-    alert("Вызван sendCroppedImg");
+function sendCroppedImgAndSubmit() {
+    // Обработка и обрезка изображения
     cropper.getCroppedCanvas().toBlob((blob) => {
         var dt = new DataTransfer();
         var file = new File([blob], "cropped_photo.png", { type: 'image/png' });
         dt.items.add(file);
         var file_list = dt.files;
+        var cropInput = document.getElementById("cropped-photo");
         cropInput.files = file_list;
+
+        // Отправляем форму с задержкой в 3 секунды после обработки изображения
+        setTimeout(function() {
+            document.getElementById("upload-photo-form").submit();
+        }, 50); // !!!!!!!!!!!!!!!!!!!!!!! 
     });
-    alert("Закончен sendCroppedImg");
 }
+
 
 const oldHeadTitle = document.getElementById("old-header-title");
 const newHeadTitle = document.getElementById("new-header-title");

@@ -38,7 +38,8 @@ class UploadView(TemplateView):
 
     def post(self, request, *args, **kwargs):
         print(request.POST)
-        print(request.FILES)
+        uploaded_file = request.FILES['cropped-photo']
+        print(uploaded_file)
         # processor = CustomPictureBuilder('D:\\JOB\\freelance11Qbrix\\174940-ozero_vakatipu-ozero-voda-atmosfera-gidroresursy-3840x2160.jpg')
         # pixels_data = processor.process_image()
         # processor.image_to_blocks()

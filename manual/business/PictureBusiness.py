@@ -155,8 +155,6 @@ class CustomPictureBuilder:
 
         self.image = image
 
-    
-    
     def process_image(self):
         """ Применяет все нужные фильтры к картинке """
         self.enhance("brightness", CustomPictureBuilder.BRIGHTNESS)
