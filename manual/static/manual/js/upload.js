@@ -44,8 +44,9 @@ function openCrop(event) {
     fileReader.readAsDataURL(target.files[0]);
 }
 
-// Сохраняет новый файл картинки // 
+// Добавляет в input новый файл картинки // 
 function sendCroppedImg() {
+    alert("Вызван sendCroppedImg");
     cropper.getCroppedCanvas().toBlob((blob) => {
         var dt = new DataTransfer();
         var file = new File([blob], "cropped_photo.png", { type: 'image/png' });
@@ -53,6 +54,7 @@ function sendCroppedImg() {
         var file_list = dt.files;
         cropInput.files = file_list;
     });
+    alert("Закончен sendCroppedImg");
 }
 
 const oldHeadTitle = document.getElementById("old-header-title");

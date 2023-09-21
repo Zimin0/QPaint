@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -5,8 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colorings Creator</title>
-    <link rel="stylesheet" href="{% static 'manual/css/styles.css' %}">
-    <link rel="stylesheet" href="./node_modules/cropperjs/dist/cropper.min.css">
+    <link rel="stylesheet" href="{% static 'manual/css/styles.css' %}"> 
+    <link rel="stylesheet" href="{% static 'manual/node_modules/cropperjs/dist/cropper.min.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
@@ -59,8 +60,6 @@
 
                     <a class="submit-btn" id="upload-back" href="{% url 'manual:version' %}">Назад</a>
 
-
-
                     <div id="photo-info" class="wrapper">
                         <img class="info-img" src="{% static 'manual/img/bad-pic-1.jpg' %}" alt="">
                         <img class="info-img" src="{% static 'manual/img/bad-pic-2.jpg' %}" alt="">
@@ -73,19 +72,18 @@
                         <button class="submit-btn" onclick="photo.click()">Ок, понятно</button>
                     </div>
 
-
-
                     <div id="cropper-block" class="wrapper">
-                        <img src="" alt="" id="crop-img">{% static 'manual/img/plus-ico.svg' %}
-                        <div class="crop-btns wrapper"> {% static 'manual/img/rotate-left.svg' %}
+                        <img src="" alt="" id="crop-img">
+                        <div class="crop-btns wrapper"> 
                             <button onclick="cropper.zoom(0.1)"><img src="{% static 'manual/img/plus-ico.svg' %}" alt="+"></button>
                             <button onclick="cropper.zoom(-0.1)"><img src="{% static 'manual/img/minus-ico.svg' %}" alt="-"></button>
                             <button onclick="cropper.rotate(90)"><img src="{% static 'manual/img/rotate-right.svg' %}" alt=""></button>
                             <button onclick="cropper.rotate(-90)"><img src="{% static 'manual/img/rotate-left.svg' %}" alt=""></button>
                         </div>
-                        <form id="upload-photo-form" method="POST">
-                            <input type="file" name="cropped-photo" id="cropped-photo" onchange="this.form.submit()">
-                            <button class="submit-btn" id="crop-submit" onclick="sendCroppedImg()">Готово</button>
+                        <form method="POST" id="upload-photo-form" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="file" name="cropped-photo" id="cropped-photo" onchange="this.form.submit()"> <!--    --> 
+                            <button type="submit" class="submit-btn" id="crop-submit" onclick="sendCroppedImg()">Готово</button>
                         </form>
                     </div>
                 </div>

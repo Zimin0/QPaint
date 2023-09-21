@@ -1,5 +1,5 @@
 from django.urls import path
-from manual.views import GetManualView, CodeView, VersionView, UploadView, UseManualView, EmailView, ChoosePicView
+from manual.views import GetManualView, CodeView, VersionView, UploadView, UseManualView, EmailView, ChoosePicView, GetColorsJson
 
 app_name = 'manual'
 
@@ -10,5 +10,6 @@ urlpatterns = [
     path('upload/', UploadView.as_view(), name='upload'),
     path('email/', EmailView.as_view(), name='email'),
     path('use-manual/', UseManualView.as_view(), name='use_manual'),
-    path('choose-pic/', ChoosePicView.as_view(), name='choose_pic')
+    path('choose-pic/', ChoosePicView.as_view(), name='choose_pic'),
+    path('get-colors-json', GetColorsJson.as_view(), name='get_colors_json'),
 ]

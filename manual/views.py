@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView
 from django.shortcuts import HttpResponse, redirect, render
 from manual.models import AssemblyCode, Constructor # H24gGD85L
+from manual.business.PictureBusiness import CustomPictureBuilder
 
 class GetManualView(TemplateView):
     """ Главная страница - получить инструкцию, ..."""
@@ -37,12 +38,18 @@ class UploadView(TemplateView):
 
     def post(self, request, *args, **kwargs):
         print(request.POST)
+        print(request.FILES)
+        # processor = CustomPictureBuilder('D:\\JOB\\freelance11Qbrix\\174940-ozero_vakatipu-ozero-voda-atmosfera-gidroresursy-3840x2160.jpg')
+        # pixels_data = processor.process_image()
+        # processor.image_to_blocks()
+        # processor.get_json_pixels()
         # Нажата кнопка предпросмотра картинки
-        new_constructor = Constructor.objects.create(
-            manual_file = ..., # получаем из бизнес логики
-            picture = ..., # получаем из бизнес логики
-            assemblycode = AssemblyCode.objects.get(code=request.session.get("assembly_code", None)),
-        )
+        # new_constructor = Constructor.objects.create(
+        #     manual_file = ..., # получаем из бизнес логики
+        #     picture = ..., # получаем из бизнес логики
+        #     assemblycode = AssemblyCode.objects.get(code=request.session.get("assembly_code", None)),
+        # )
+        return render(request, self.template_name)
         return redirect('manual:email')
 
 class EmailView(TemplateView):
@@ -63,3 +70,7 @@ class UseManualView(TemplateView):
 class ChoosePicView(TemplateView):
     """ Выбор из конвертированных картинок """
     template_name = 'manual/choose_photo.html'
+
+class GetColorsJson(TemplateView):
+    """ URL для запросов в фронта и получения массива цветов кратинки """
+    ...

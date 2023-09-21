@@ -5,7 +5,7 @@ async function setColors(page) {
 
         // Здесь должен запрашиваться массив цветов в формате JSON
 
-        // let url = `https://example_url/${page - 1}`;
+        // let url = `https://example_url/${page - 1}`; 120 шагов
         // let response = await fetch(url);
 
         // let colors = await response.json();
@@ -46,7 +46,6 @@ function setPage(page) {
     const newRelativePathQuery =
         window.location.pathname + '?' + searchParams.toString();
     history.pushState(null, '', newRelativePathQuery);
-
     setColors(page);
 }
 

@@ -42,7 +42,6 @@ class CustomPictureBuilder:
         (255, 255, 255)
     ]
 
-    
     def __init__(self, image_url_or_path):
         self.image_url_or_path = image_url_or_path
         self.image = self.open_image(self.image_url_or_path)
@@ -170,8 +169,5 @@ class CustomPictureBuilder:
         self.save_image()
         return pixels_data
 
-# processor = CustomPictureBuilder('D:\\JOB\\freelance11Qbrix\\174940-ozero_vakatipu-ozero-voda-atmosfera-gidroresursy-3840x2160.jpg')
-# pixels_data = processor.process_image()
-# processor.image_to_blocks()
-# processor.get_json_pixels()
+
 

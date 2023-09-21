@@ -36,5 +36,6 @@ class Constructor(models.Model):
     slug = models.SlugField(verbose_name="Слаг", null=True)
     picture = models.ImageField(verbose_name="картинка JPG", upload_to=get_file_name, null=True)
     assemblycode = models.ForeignKey(AssemblyCode, verbose_name="Код-сборки", on_delete=models.SET_NULL, null=True)
+    json_pixels = models.TextField(null=True, blank=True) # editable = False
     email = models.CharField(max_length=100, verbose_name="Почта", default="", null=True)
 
