@@ -44,18 +44,13 @@ function openCrop(event) {
     fileReader.readAsDataURL(target.files[0]);
 }
 
-function onSubmitWithDelay(form){
-    // alert("SHIT!!!");
-    sendCroppedImg();
-    // setTimeout(form.submit(), 5000);
-}
 
 // Добавляет в input новый файл картинки // 
 function sendCroppedImgAndSubmit() {
     // Обработка и обрезка изображения
-    cropper.getCroppedCanvas().toBlob((blob) => {
+    cropper.getCroppedCanvas({imageSmoothingEnabled: true}).toBlob((blob) => {
         var dt = new DataTransfer();
-        var file = new File([blob], "cropped_photo.png", { type: 'image/png' });
+        var file = new File([blob], "cropped_photo.png", { type: 'image/png'}, 1);
         dt.items.add(file);
         var file_list = dt.files;
         var cropInput = document.getElementById("cropped-photo");

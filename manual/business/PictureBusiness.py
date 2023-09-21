@@ -27,9 +27,6 @@ class CustomPictureBuilder:
     self.output_path - путь до картинки
     self.name - название файла картинки
     """
-    BRIGHTNESS = 1.5
-    SHARPNESS = 3
-    CONTRAST = 1.4
     WIDTH = 120 # ширина картинки
     HEIGHT = 160 # высота картинки
     BLOCK_WIDTH = 10 
@@ -42,13 +39,20 @@ class CustomPictureBuilder:
         (255, 255, 255)
     ]
 
-    def __init__(self, image_url_or_path):
-        self.image_url_or_path = image_url_or_path
-        self.image = self.open_image(self.image_url_or_path)
+    def __init__(self, image_source, BRIGHTNESS=1, SHARPNESS=3, CONTRAST=1.4, save_image_path=None):
+        self.save_image_path = save_image_path
+        self.BRIGHTNESS = BRIGHTNESS # 1.5
+        self.SHARPNESS = SHARPNESS # 3
+        self.CONTRAST = CONTRAST # 1.4
+        if isinstance(image_source, str):
+            self.image = self.open_image(image_source)
+        else:
+            # Если предоставлен объект файла
+            self.image = Image.open(image_source)
     
     def open_image(self, path_or_url):
         """ 
-        Открывает изображение по локальному пути.
+        Открывает изображение по локальному пути или URL.
         Возвращает объект изображения PIL.
         """
         if path_or_url.startswith(('http://', 'https://')):
@@ -63,9 +67,11 @@ class CustomPictureBuilder:
         self.name = f"PIC_{random_letters}.jpg"
         return self.name
     
-    def save_image(self, path_to_media_folder=None): # !!!!!! 
-        if path_to_media_folder is None: # если папка не задана программистом
+    def save_image(self): 
+        if self.save_image_path is None: # если папка не задана программистом при инициализации объекта 
             path_to_media_folder=os.getcwd()
+        else:
+            path_to_media_folder = self.save_image_path
         self.output_path = os.path.join(path_to_media_folder, self._generate_random_file_name())
         self.image.save(self.output_path, "JPEG")
         return self.output_path
@@ -109,8 +115,7 @@ class CustomPictureBuilder:
         self.image = self.image.resize((CustomPictureBuilder.WIDTH, CustomPictureBuilder.HEIGHT), Image.Resampling.LANCZOS)
     
     def get_json_pixels(self):
-        """ Создает json файл со всеми цветами пикселей изображения """
-
+        """ Создает json файл со всеми цветами пикселей изображения. Не используется. """
         pixels_list = self.image_to_blocks()
         with open("data.json", "w", encoding='utf-8') as file:
             json.dump(pixels_list, file)
@@ -157,9 +162,10 @@ class CustomPictureBuilder:
 
     def process_image(self):
         """ Применяет все нужные фильтры к картинке """
-        self.enhance("brightness", CustomPictureBuilder.BRIGHTNESS)
-        self.enhance("sharpness", CustomPictureBuilder.SHARPNESS)
-        self.enhance("contrast", CustomPictureBuilder.CONTRAST)
+        self.enhance("brightness", self.BRIGHTNESS)
+        self.enhance("sharpness", self.SHARPNESS)
+        self.enhance("contrast", self.CONTRAST)
+        self.image = self.image.convert('RGB') # конвертирует из rgba В rgb
         self.apply_smooth()
         self.resize()
         self.get_black_white_pic_average()
@@ -169,3 +175,5 @@ class CustomPictureBuilder:
 
 
 
+# processor = CustomPictureBuilder("D:\\JOB\\freelance11Qbrix\\paints\\media\\cropped_photo.jpg", BRIGHTNESS=1, SHARPNESS=3, CONTRAST=1.4)
+# pixels_data = processor.process_image()

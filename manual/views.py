@@ -2,6 +2,8 @@ from django.views.generic import TemplateView
 from django.shortcuts import HttpResponse, redirect, render
 from manual.models import AssemblyCode, Constructor # H24gGD85L
 from manual.business.PictureBusiness import CustomPictureBuilder
+from django.conf import settings
+import os
 
 class GetManualView(TemplateView):
     """ Главная страница - получить инструкцию, ..."""
@@ -39,11 +41,19 @@ class UploadView(TemplateView):
     def post(self, request, *args, **kwargs):
         print(request.POST)
         uploaded_file = request.FILES['cropped-photo']
-        print(uploaded_file)
-        # processor = CustomPictureBuilder('D:\\JOB\\freelance11Qbrix\\174940-ozero_vakatipu-ozero-voda-atmosfera-gidroresursy-3840x2160.jpg')
-        # pixels_data = processor.process_image()
+        # Указываем путь к директории для сохранения изображений
+        save_path = os.path.join(settings.MEDIA_ROOT,uploaded_file.name)
+
+        # Сохраняем изображение
+        with open(save_path, 'wb+') as destination:
+            for chunk in uploaded_file.chunks():
+                destination.write(chunk)
+
+        for pic_color in range(7, 18, 2): 
+            print(pic_color/10)
+            processor = CustomPictureBuilder(image_source=save_path, BRIGHTNESS=pic_color/10, save_image_path='media/2023')
+            pixels_data = processor.process_image()
         # processor.image_to_blocks()
-        # processor.get_json_pixels()
         # Нажата кнопка предпросмотра картинки
         # new_constructor = Constructor.objects.create(
         #     manual_file = ..., # получаем из бизнес логики
