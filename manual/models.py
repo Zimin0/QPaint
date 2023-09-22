@@ -25,12 +25,29 @@ class Constructor(models.Model):
         verbose_name = "Конструктор картинки"
         verbose_name_plural = "Конструкторы картинко"
 
-    def get_file_name(instance, filename):
+    def get_file_name(instance=None, filename:str=None, convert_id:str=None, tmp:bool=False, only_path:bool=False):
+        """ tmp - временная директория """
         today = datetime.today()
         year = str(today.year)
         month = str(today.month).zfill(2)  # добавляем ведущий ноль, если месяц от 1 до 9
         day = str(today.day).zfill(2)      # добавляем ведущий ноль, если день от 1 до 9
-        return os.path.join(year, month, day, filename)
+        file_path = os.path.join('media', year, month, day)
+
+        if convert_id is not None:
+            file_path = os.path.join(file_path, convert_id)
+        if tmp:
+            file_path = os.path.join(file_path, 'tmp')
+
+        # Проверяем существование директории и создаем, если она не существует
+        if not os.path.exists(file_path):
+            os.makedirs(file_path)
+        else:  # Если директория существует и не пуста, удаляем все файлы из неё
+            for file in os.listdir(file_path):
+                os.remove(os.path.join(file_path, file))
+
+        if only_path:
+            return file_path
+        return os.path.join(file_path, filename)
     
     manual_file = models.FileField(verbose_name="Файл PDF инструкции", upload_to=get_file_name, null=True)
     slug = models.SlugField(verbose_name="Слаг", null=True)

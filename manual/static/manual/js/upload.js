@@ -47,7 +47,8 @@ function openCrop(event) {
 
 // Добавляет в input новый файл картинки // 
 function sendCroppedImgAndSubmit() {
-    // Обработка и обрезка изображения
+    let submitButton = document.getElementById('crop-submit');
+    submitButton.disabled = true;
     cropper.getCroppedCanvas({imageSmoothingEnabled: true}).toBlob((blob) => {
         var dt = new DataTransfer();
         var file = new File([blob], "cropped_photo.png", { type: 'image/png'}, 1);
@@ -56,10 +57,9 @@ function sendCroppedImgAndSubmit() {
         var cropInput = document.getElementById("cropped-photo");
         cropInput.files = file_list;
 
-        // Отправляем форму с задержкой в 3 секунды после обработки изображения
         setTimeout(function() {
             document.getElementById("upload-photo-form").submit();
-        }, 50); // !!!!!!!!!!!!!!!!!!!!!!! 
+        }, 50); 
     });
 }
 

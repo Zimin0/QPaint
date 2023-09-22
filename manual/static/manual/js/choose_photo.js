@@ -12,11 +12,11 @@ for (let i = 0; i < radioBtns.length; i++) {
 
 const choosePhotos = Array.from(document.getElementsByClassName("photo-img"));
 
-// let url = `https://example_url`;
-// let response = await fetch(url);
+let url = `https://example_url`;
+let response = await fetch(url);
 
-// let photos = await response.json();
+let photos = await response.json();
 
-// for(let i = 0; i < photos.lenght; i++) {
-//      choosePhotos[i].src = photos[i];
-// }
+for(let i = 0; i < photos.lenght; i++) {
+     choosePhotos[i].src = photos[i];
+}

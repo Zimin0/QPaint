@@ -48,11 +48,14 @@ class UploadView(TemplateView):
         # with open(save_path, 'wb+') as destination:
         #     for chunk in uploaded_file.chunks():
         #         destination.write(chunk)
-
+        last_pic_paths = []
+        path = Constructor.get_file_name(convert_id='11', tmp=True, only_path=True)
         for pic_color in range(7, 18, 2): 
-            print(pic_color/10)
-            processor = CustomPictureBuilder(image_source=uploaded_file, BRIGHTNESS=pic_color/10, save_image_path='media/2023')
+            processor = CustomPictureBuilder(image_source=uploaded_file, BRIGHTNESS=pic_color/10, save_image_path=path)
             pixels_data = processor.process_image()
+            last_pic_paths.append(path)
+        request.session['last_pic_paths'] = last_pic_paths
+        print(request.session['last_pic_paths'])
         # processor.image_to_blocks()
         # Нажата кнопка предпросмотра картинки
         # new_constructor = Constructor.objects.create(
