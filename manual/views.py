@@ -3,6 +3,7 @@ from django.shortcuts import HttpResponse, redirect, render
 from manual.models import AssemblyCode, Constructor # H24gGD85L
 from manual.business.PictureBusiness import CustomPictureBuilder
 from django.conf import settings
+from django.http import JsonResponse
 import os
 
 class GetManualView(TemplateView):
@@ -53,7 +54,7 @@ class UploadView(TemplateView):
         for pic_color in range(7, 18, 2): 
             processor = CustomPictureBuilder(image_source=uploaded_file, BRIGHTNESS=pic_color/10, save_image_path=path)
             pixels_data = processor.process_image()
-            last_pic_paths.append(path)
+            last_pic_paths.append(processor.final_path)
         request.session['last_pic_paths'] = last_pic_paths
         print(request.session['last_pic_paths'])
         # processor.image_to_blocks()
@@ -83,7 +84,33 @@ class UseManualView(TemplateView):
 class ChoosePicView(TemplateView):
     """ Выбор из конвертированных картинок """
     template_name = 'manual/choose_photo.html'
+    context = {}
+
+    def get(self, request):
+        paths_list_session = request.session.get("last_pic_paths", False)
+        if not paths_list_session:
+            print("Путей картинок нет в сессии !!!")
+            ChoosePicView.context['pictures'] = []
+        photos_list = []
+        for path in paths_list_session:
+            path = '/' + path
+            path = path.replace('\\', '/')
+            photos_list.append(path)
+        ChoosePicView.context['pictures'] = photos_list
+        return render(request, ChoosePicView.template_name, ChoosePicView.context)
 
 class GetColorsJson(TemplateView):
     """ URL для запросов в фронта и получения массива цветов кратинки """
     ...
+
+class GetPhotoesView(TemplateView):
+    """ API для получения списка путей к 6ти картинкам """
+    def get(self, request, *args, **kwargs):
+        paths_list_session = request.session.get("last_pic_paths", False)
+        if not paths_list_session:
+            print("Путей картинок нет в сессии !!!")
+            return JsonResponse([], safe=False)
+        photos_list = []
+        for path in paths_list_session:
+            photos_list.append(path)
+        return JsonResponse(photos_list, safe=False)

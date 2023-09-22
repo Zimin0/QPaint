@@ -47,41 +47,13 @@
             <section class="container">
                 <form class="wrapper" id="coloring-photo-form" method="POST" >
                     <div class="photos">
-                        <label class="title-2 wrapper photo-label" for="photo1">
-                            <img class="photo-img" src="./img/original.png" alt="">
+                        {% for path in pictures %}
+                        <label class="title-2 wrapper photo-label">
+                            <img class="photo-img" src="{{ path }}" alt="NO IMG">
                             <input type="radio" name="coloring_photo" id="photo1" class="photo-radio" value="photo1"
                                 onclick="selectPhoto()">
-                        </label>
-
-                        <label class="title-2 wrapper photo-label" for="photo2">
-                            <img class="photo-img" src="./img/test.jpg" alt="">
-                            <input type="radio" name="coloring_photo" id="photo1" class="photo-radio" value="photo2"
-                                onclick="selectPhoto()">
-                        </label>
-
-                        <label class="title-2 wrapper photo-label" for="photo3">
-                            <img class="photo-img" src="./img/test.jpg" alt="">
-                            <input type="radio" name="coloring_photo" id="photo1" class="photo-radio" value="photo3"
-                                onclick="selectPhoto()">
-                        </label>
-
-                        <label class="title-2 wrapper photo-label" for="photo4">
-                            <img class="photo-img" src="./img/original.png" alt="">
-                            <input type="radio" name="coloring_photo" id="photo1" class="photo-radio" value="photo4"
-                                onclick="selectPhoto()">
-                        </label>
-
-                        <label class="title-2 wrapper photo-label" for="photo5">
-                            <img class="photo-img" src="./img/original.png" alt="">
-                            <input type="radio" name="coloring_photo" id="photo1" class="photo-radio" value="photo5"
-                                onclick="selectPhoto()">
-                        </label>
-
-                        <label class="title-2 wrapper photo-label" for="photo6">
-                            <img class="photo-img" src="./img/original.png" alt="">
-                            <input type="radio" name="coloring_photo" id="photo1" class="photo-radio" value="photo6"
-                                onclick="selectPhoto()">
-                        </label>
+                            </label>
+                        {% endfor %}
                     </div>
 
                     <div class="btns">

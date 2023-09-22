@@ -170,7 +170,7 @@ class CustomPictureBuilder:
         self.resize()
         self.get_black_white_pic_average()
         pixels_data = self.get_json_pixels()
-        self.save_image()
+        self.final_path = self.save_image()
         return pixels_data
 
 

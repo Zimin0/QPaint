@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-vs3to#x*2k*bd!cx8wf*bsj8h)@e(jpuk_5o^@$@4j5o!x-mlp
 DEBUG = True
 
 ALLOWED_HOSTS = ['*',]
+CSRF_TRUSTED_ORIGINS = ['https://d0cb-91-238-229-3.ngrok-free.app',]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'prodstatic')  
 STATIC_URL = '/static/'

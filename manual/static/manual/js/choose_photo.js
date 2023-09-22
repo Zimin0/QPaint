@@ -10,13 +10,19 @@ for (let i = 0; i < radioBtns.length; i++) {
     radioBtns[i].checked = false;
 }
 
-const choosePhotos = Array.from(document.getElementsByClassName("photo-img"));
+// const choosePhotos = Array.from(document.getElementsByClassName("photo-img"));
 
-let url = `https://example_url`;
-let response = await fetch(url);
+// async function loadPhotos() {
+//     let domain = "https://d0cb-91-238-229-3.ngrok-free.app";
+//     let url = `${domain}/get-photos`;
+//     let response = await fetch(url);
+//     let photos = await response.json();
 
-let photos = await response.json();
+//     for(let i = 0; i < photos.length; i++) {
+//         photos[i] = domain + "/" + photos[i];
+//         choosePhotos[i].src = photos[i];
+//         alert(choosePhotos[i].src);
+//     }
+// }
 
-for(let i = 0; i < photos.lenght; i++) {
-     choosePhotos[i].src = photos[i];
-}
+// loadPhotos();
