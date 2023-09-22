@@ -42,16 +42,16 @@ class UploadView(TemplateView):
         print(request.POST)
         uploaded_file = request.FILES['cropped-photo']
         # Указываем путь к директории для сохранения изображений
-        save_path = os.path.join(settings.MEDIA_ROOT,uploaded_file.name)
+        # save_path = os.path.join(settings.MEDIA_ROOT,uploaded_file.name)
 
-        # Сохраняем изображение
-        with open(save_path, 'wb+') as destination:
-            for chunk in uploaded_file.chunks():
-                destination.write(chunk)
+        # # Сохраняем изображение
+        # with open(save_path, 'wb+') as destination:
+        #     for chunk in uploaded_file.chunks():
+        #         destination.write(chunk)
 
         for pic_color in range(7, 18, 2): 
             print(pic_color/10)
-            processor = CustomPictureBuilder(image_source=save_path, BRIGHTNESS=pic_color/10, save_image_path='media/2023')
+            processor = CustomPictureBuilder(image_source=uploaded_file, BRIGHTNESS=pic_color/10, save_image_path='media/2023')
             pixels_data = processor.process_image()
         # processor.image_to_blocks()
         # Нажата кнопка предпросмотра картинки
@@ -60,8 +60,7 @@ class UploadView(TemplateView):
         #     picture = ..., # получаем из бизнес логики
         #     assemblycode = AssemblyCode.objects.get(code=request.session.get("assembly_code", None)),
         # )
-        return render(request, self.template_name)
-        return redirect('manual:email')
+        return redirect('manual:choose_pic') 
 
 class EmailView(TemplateView):
     """ Ввод почты для отправки инструкции. """
