@@ -9,7 +9,7 @@ class AssemblyCodeAdmin(admin.ModelAdmin):
 
 @admin.register(Constructor)
 class ConstructorAdmin(admin.ModelAdmin):
-    list_display = ['manual_file', 'slug', 'picture', 'assemblycode']
+    list_display = ['id', 'email', 'assemblycode', 'picture',]
     search_fields = ['slug', 'assemblycode__code']
     list_filter = ['manual_file']
     raw_id_fields = ['assemblycode'] 

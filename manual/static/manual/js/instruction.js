@@ -1,32 +1,20 @@
-const COLORING_COlORS = ["black", "gray1", "gray2", "gray3", "white"];
+// const COLORING_COlORS = ["black", "gray1", "gray2", "gray3", "white"];
 
 async function setColors(page) {
     if (!instructionBlocks[page - 1].childNodes.length) {
+        let url = `https://df00-91-238-229-3.ngrok-free.app/get-pixels/${instruction_slug}/${page - 1}`; 
 
-        // Здесь должен запрашиваться массив цветов в формате JSON
-
-        // let url = `https://example_url/${page - 1}`; 120 шагов
-        // let response = await fetch(url);
-
-        // let colors = await response.json();
-
+        let response = await fetch(url);
+        let colors = await response.json();
         for (let i = 0; i < 160; i++) {
             let colorSpan = document.createElement('span');
             colorSpan.className = "square";
-
-            // Здесь должны получаться числа из массива и подставляться цвета 
-
-            // let c = colors[i];
-            // if(c == [0, 0, 0]) colorSpan.classList.add("black");
-            // else if(c == [64, 64, 64]) colorSpan.classList.add("gray1");
-            // else if(c == [128, 128, 128]) colorSpan.classList.add("gray2");
-            // else if(c == [191, 191, 191]) colorSpan.classList.add("gray3");
-            // else if(c == [255, 255, 255]) colorSpan.classList.add("white");
-
-            let c = COLORING_COlORS[Math.floor(Math.random() * 5)];
-            colorSpan.classList.add(c);
-
-            // Верхние 2 строчки и const COLORING_COLORS убрать, когда заработают запросы
+            let c = colors[i];
+            if(c[0] == 0) colorSpan.classList.add("black");
+            else if(c[0] == 64) colorSpan.classList.add("gray1");
+            else if(c[0] == 100) colorSpan.classList.add("gray2");
+            else if(c[0] == 130) colorSpan.classList.add("gray3");
+            else if(c[0] == 255) colorSpan.classList.add("white");
 
             colorSpan.style.border = "solid 2px black"
             colorSpan.classList.add("uncolored");

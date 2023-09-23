@@ -46,11 +46,12 @@
 
             <section class="container">
                 <form class="wrapper" id="coloring-photo-form" method="POST" >
+                    {% csrf_token %}
                     <div class="photos">
                         {% for path in pictures %}
                         <label class="title-2 wrapper photo-label">
                             <img class="photo-img" src="{{ path }}" alt="NO IMG">
-                            <input type="radio" name="coloring_photo" id="photo1" class="photo-radio" value="photo1"
+                            <input type="radio" name="coloring_photo" id="photo1" class="photo-radio" value="{{ path }}"
                                 onclick="selectPhoto()">
                             </label>
                         {% endfor %}

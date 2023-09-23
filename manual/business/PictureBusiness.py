@@ -127,7 +127,6 @@ class CustomPictureBuilder:
         """
         pixels = list(self.image.getdata())
         blocks = []        
-
         for i in range(0, self.image.width, self.BLOCK_WIDTH):
             for j in range(0, self.image.height, self.BLOCK_HEIGHT): 
                 block = []
@@ -136,7 +135,6 @@ class CustomPictureBuilder:
                         if i + x < self.image.width and j + y < self.image.height:
                             block.append(list(pixels[(i + x) + (j + y) * self.image.width]))
                 blocks.append(block)
-
         return blocks
 
     def blocks_to_image(self, blocks):
@@ -145,9 +143,7 @@ class CustomPictureBuilder:
         """
         image = Image.new("RGB", (self.image.width, self.image.height))
         draw = image.load()
-
         block_index = 0
-
         for i in range(0, self.image.width, self.BLOCK_WIDTH):
             for j in range(0, self.image.height, self.BLOCK_HEIGHT):
                 pixel_index = 0
@@ -157,7 +153,6 @@ class CustomPictureBuilder:
                             draw[i + x, j + y] = tuple(blocks[block_index][pixel_index])
                             pixel_index += 1
                 block_index += 1
-
         self.image = image
 
     def process_image(self):
@@ -172,8 +167,6 @@ class CustomPictureBuilder:
         pixels_data = self.get_json_pixels()
         self.final_path = self.save_image()
         return pixels_data
-
-
 
 # processor = CustomPictureBuilder("D:\\JOB\\freelance11Qbrix\\paints\\media\\cropped_photo.jpg", BRIGHTNESS=1, SHARPNESS=3, CONTRAST=1.4)
 # pixels_data = processor.process_image()

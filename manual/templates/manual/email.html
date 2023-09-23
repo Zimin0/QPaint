@@ -46,15 +46,15 @@
                         Введи свою почту
                     </label>
                     <input id="email-input" name="email" type="text" placeholder="Твой e-mail">
-
-                    <input type="submit" id="email-submit" class="upload-btn" value="Отправить">
+                    <div class="loader" id="loading-icon" style="--b: 15px;--c:#0195ae;width:40px;--n:8; display: none;"></div>
+                    <button type="submit" id="email-submit" class="upload-btn" onclick="displayLoadingAnimation(this)">Отправить</button>
                 </form>
             </section>
         </div>
 
         <footer class="footer"></footer>
     </div>
-
+    <script src="{% static 'manual/js/load.js' %}"></script>
     <script src="https://kit.fontawesome.com/2a7549d8ca.js" crossorigin="anonymous"></script>
     <script src="{% static 'manual/js/langs_changer.js' %}"></script>
 </body>
