@@ -1,46 +1,49 @@
 function openInfo() {
     oldHeadTitle.style.display = "none";
     newHeadTitle.style.display = "block";
-
     uploadInvite.style.display = "none";
     photoInfo.style.display = "flex";
-
     backBtn.style.display = "none";
     uploadBlock.style.display = "block";
 }
 
+function isValidImageType(fileType) {
+    const validImageTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    return validImageTypes.includes(fileType);
+}
+
 function openCrop(event) {
+    let target = event.target;
+    if (!isValidImageType(target.files[0].type)) {
+        newHeaderTitle.textContent = 'Неверный формат файла. Загрузите изображение в формате jpg, png или gif';
+        // alert('Неверный формат файла. Пожалуйста, загрузите изображение в формате jpg, png или gif');
+        target.value = '';  
+        window.scrollTo(0, 0);
+        return;
+    }
     newHeadTitle.style.display = "none";
     colorsTitle.style.display = "flex";
-
     photoInfo.style.display = "none";
     cropBlock.style.display = "flex";
-
     uploadBlock.style.display = "none";
-
-    let target = event.target;
-
+    uploadMessage.textContent = 'Загрузите любую картинку из своей медиатеки';
     if (!FileReader) {
         alert('FileReader не поддерживается :(');
         return;
     }
-
     if (!target.files.length) {
         alert('Ничего не загружено!');
         return;
     }
-
     let fileReader = new FileReader();
     fileReader.onload = function () {
         cropImg.src = fileReader.result;
-
         cropper = new Cropper(cropImg, {
             aspectRatio: 30 / 40,
             viewMode: 1,
             dragMode: "move"
         });
     }
-
     fileReader.readAsDataURL(target.files[0]);
 }
 
@@ -74,7 +77,8 @@ function displayLoadingAnimation(button){
     loadingIcon.style.display = "inline-block"; // покажем объект загрузки
 }
 
-
+const uploadMessage = document.querySelector('.title-2');
+const newHeaderTitle = document.getElementById('new-header-title')
 const oldHeadTitle = document.getElementById("old-header-title");
 const newHeadTitle = document.getElementById("new-header-title");
 const colorsTitle = document.getElementById("colors-title");

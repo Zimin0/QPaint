@@ -2,7 +2,9 @@ from django.views.generic import TemplateView
 from django.shortcuts import HttpResponse, redirect, render
 from manual.models import AssemblyCode, Constructor 
 from manual.business.PictureBusiness import CustomPictureBuilder
+from django.http import JsonResponse
 import json
+
 
 class GetManualView(TemplateView):
     """ Главная страница - получить инструкцию, ..."""
@@ -118,12 +120,8 @@ class GetInstruction(TemplateView):
             constr_obj = constr_objects.first()
             return render(request, GetInstruction.template_name, {'instruction_slug':constr_obj.slug})
 
-from django.http import JsonResponse
-from django.views import View
-from .models import Constructor
-import json
 
-class GetPixelsView(View):
+class GetPixelsView(TemplateView):
     def get(self, request, instruction_slug, page_num):
         try:
             constr_obj = Constructor.objects.get(slug=instruction_slug)
@@ -132,7 +130,6 @@ class GetPixelsView(View):
             return JsonResponse(pixel_blocks_one, safe=False)  # safe=False, так как pixel_blocks является списком, а не словарём
         except Constructor.DoesNotExist:
             return JsonResponse({"error": "Constructor not found"}, status=404)
-
 
 """  
 request.session

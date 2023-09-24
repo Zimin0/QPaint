@@ -82,6 +82,7 @@
                         </div>
                         <form method="POST" id="upload-photo-form" enctype="multipart/form-data">
                             {% csrf_token %}
+                            
                             <input type="file" name="cropped-photo" id="cropped-photo">
                             <div class="loader" id="loading-icon" style="--b: 15px;--c:#0195ae;width:40px;--n:8; display: none;"></div>
                             <button type="button" class="submit-btn" id="crop-submit" onclick="sendCroppedImgAndSubmit(this)">Готово</button>
