@@ -70,6 +70,7 @@ function sendCroppedImgAndSubmit(button) {
 }
 
 
+
 // Отображает анимацию загрузки // 
 function displayLoadingAnimation(button){
     button.style.display = "none";
